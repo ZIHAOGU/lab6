@@ -6,8 +6,9 @@
 int main(int argc, char *argv[])
 {
  FILE *fd;      /*file pointer*/
- int n,y,high,low,first,last; /*y is current, first is boolean,last is last t*/
- char buf[101];
+ int n,first,last; /*y is current, first is boolean,last is last t*/
+ double y, low,high;
+char buf[101];
  char *temp;    /* temp pointer*/
  char l[50], cur[50],h[50];    /*different temp message store space*/
  time_t start = time(NULL);  /*current time*/
@@ -28,8 +29,9 @@ int main(int argc, char *argv[])
  (void) fclose(fd);
  temp = buf+69;/*temp print after 29750, then start print 2 after +69*/ 
  printf("Temp: %s",temp);
- y = atoi(temp);       /*change from char to int*/
- printf("Integer Y: %d\n",y);
+ y = atof(temp);       /*change from char to int*/
+ y=y/1000;
+ printf("Integer Y: %.1f\n",y);
  if(first == 0){  
 	low = y;
 	high = y;
@@ -52,7 +54,7 @@ int main(int argc, char *argv[])
 	}
 	
 	}
- printf("High: %d Current: %d Low: %d\n",high,y,low);
+ printf("High: %.1f Current: %.1f Low: %.1f\n",high,y,low);
  start = time(NULL);
  next = start+1;                    /*reassign the next to make loop continue*/
 }
